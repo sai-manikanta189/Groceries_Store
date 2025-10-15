@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛒 Groceries Store Application</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="store-logo">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h1>Groceries Store</h1>
+                <p class="subtitle">Manage your grocery inventory with ease</p>
+                <div class="header-stats">
+                    <div class="stat-box">
+                        <i class="fas fa-boxes"></i>
+                        <span id="total-items">0</span>
+                        <p>Items</p>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-rupee-sign"></i>
+                        <span id="total-value">0</span>
+                        <p>Total Value</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Menu Section -->
+            <div class="menu-section">
+                <h2>Store Menu</h2>
+                <div class="menu-buttons">
+                    <button class="menu-btn btn-add" onclick="showSection('add')">
+                        <div class="btn-icon">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <h3>Add Item</h3>
+                        <p>Add new grocery items</p>
+                    </button>
+                    <button class="menu-btn btn-view" onclick="showSection('view')">
+                        <div class="btn-icon">
+                            <i class="fas fa-list-ul"></i>
+                        </div>
+                        <h3>View Items</h3>
+                        <p>See all inventory</p>
+                    </button>
+                    <button class="menu-btn btn-update" onclick="showSection('update')">
+                        <div class="btn-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <h3>Update Item</h3>
+                        <p>Modify existing items</p>
+                    </button>
+                    <button class="menu-btn btn-bill" onclick="showSection('bill')">
+                        <div class="btn-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h3>Generate Bill</h3>
+                        <p>Create invoice</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Add Item Section -->
+            <div id="add-section" class="section hidden">
+                <div class="section-header">
+                    <i class="fas fa-plus-circle"></i>
+                    <h2>Add New Item</h2>
+                </div>
+                <form id="add-form" class="form-card">
+                    <div class="form-group">
+                        <label for="add-name">Item Name:</label>
+                        <input type="text" id="add-name" required placeholder="e.g., Rice, Milk, Sugar">
+                    </div>
+                    <div class="form-group">
+                        <label for="add-price">Price (₹):</label>
+                        <input type="number" id="add-price" step="0.01" min="0" required placeholder="0.00">
+                    </div>
+                    <div class="form-group">
+                        <label for="add-quantity">Quantity:</label>
+                        <input type="number" id="add-quantity" min="1" required placeholder="1">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Item</button>
+                    <button type="button" class="btn btn-secondary" onclick="showSection('menu')">Cancel</button>
+                </form>
+                <div id="add-message" class="message"></div>
+            </div>
+
+            <!-- View Items Section -->
+            <div id="view-section" class="section hidden">
+                <div class="section-header">
+                    <i class="fas fa-list-ul"></i>
+                    <h2>Available Grocery Items</h2>
+                </div>
+                <div id="items-table-container">
+                    <!-- Items will be displayed here -->
+                </div>
+                <button class="btn btn-secondary" onclick="showSection('menu')">Back to Menu</button>
+            </div>
+
+            <!-- Update Item Section -->
+            <div id="update-section" class="section hidden">
+                <div class="section-header">
+                    <i class="fas fa-edit"></i>
+                    <h2>Update Item</h2>
+                </div>
+                <form id="update-form" class="form-card">
+                    <div class="form-group">
+                        <label for="update-name">Item Name:</label>
+                        <input type="text" id="update-name" required placeholder="Enter item name to update">
+                    </div>
+                    <div class="form-group">
+                        <label for="update-price">New Price (₹):</label>
+                        <input type="number" id="update-price" step="0.01" min="0" required placeholder="0.00">
+                    </div>
+                    <div class="form-group">
+                        <label for="update-quantity">New Quantity:</label>
+                        <input type="number" id="update-quantity" min="1" required placeholder="1">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Item</button>
+                    <button type="button" class="btn btn-secondary" onclick="showSection('menu')">Cancel</button>
+                </form>
+                <div id="update-message" class="message"></div>
+            </div>
+
+            <!-- Generate Bill Section -->
+            <div id="bill-section" class="section hidden">
+                <div class="section-header">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h2>Grocery Bill</h2>
+                </div>
+                <div id="bill-container">
+                    <!-- Bill will be displayed here -->
+                </div>
+                <button class="btn btn-secondary" onclick="showSection('menu')">Back to Menu</button>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <i class="fas fa-store"></i>
+                <p>Grocery Store Management System</p>
+                <p class="footer-year">© 2025 - Made with <i class="fas fa-heart"></i></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
